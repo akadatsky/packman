@@ -8,19 +8,10 @@ import sample.board.Board;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Enemy extends Unit {
-
-    private boolean isMoving = false;
-    private int speed = SIZE / 60 + 1;
-    private int destX;
-    private int destY;
-    private int mouseAngle = board.rand.nextInt(45);
-    private int mouseAngleStep = 1;
+public class Enemy extends MovingUnit {
 
     public Enemy(GraphicsContext gc, Board board, int xCell, int yCell) {
         super(gc, board, xCell, yCell);
-        destX = x;
-        destY = y;
     }
 
     @Override
@@ -28,27 +19,7 @@ public class Enemy extends Unit {
         gc.setFill(Color.RED);
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(2);
-
-        double x = getShiftedX(0.1);
-        double y = getShiftedY(0.1);
-        double size = getShiftedSize(0.1);
-
-        gc.fillArc(x, y, size, size, mouseAngle, 360 - mouseAngle*2, ArcType.ROUND);
-        gc.strokeArc(x, y, size, size, mouseAngle, 360 - mouseAngle*2, ArcType.ROUND);
-
-        mouseAngle += mouseAngleStep;
-        if (mouseAngle <= 0) {
-            mouseAngleStep = 1;
-        }
-        if (mouseAngle >= 45) {
-            mouseAngleStep = -1;
-        }
-
-        if (board.isTouchToPackman(this)){
-            board.setGameOver();
-        }
-
-
+        drawPacman();
     }
 
     @Override
@@ -87,39 +58,11 @@ public class Enemy extends Unit {
         }
     }
 
-    private void makeStep() {
-
-        if (Math.abs(x - destX) <= speed) {
-            x = destX;
-            xCell = x / SIZE;
-        } else {
-            if (x > destX) {
-                x -= speed;
-            } else {
-                x += speed;
-            }
-        }
-
-        if (Math.abs(y - destY) <= speed) {
-            y = destY;
-            yCell = y / SIZE;
-        } else {
-            if (y > destY) {
-                y -= speed;
-            } else {
-                y += speed;
-            }
-        }
-
-        if (x == destX && y == destY) {
-            isMoving = false;
-        }
-    }
-
     @Override
-    public double getRadius() {
-        return super.getRadius() * 0.9;
+    public int getSpeed() {
+        return SIZE / 60 + 1;
     }
+
 
 
 }

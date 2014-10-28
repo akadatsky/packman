@@ -10,7 +10,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import sample.board.Board;
 import sample.board.Map;
 import sample.model.Unit;
@@ -50,7 +49,6 @@ public class Main extends Application {
     public void stop() throws Exception {
         closed = true;
     }
-
 
 
     private void initGame() {

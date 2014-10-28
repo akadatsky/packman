@@ -16,7 +16,7 @@ public class Gold extends Unit {
     @Override
     public void draw() {
 
-        if (!isVisible){
+        if (!isVisible) {
             return;
         }
 
@@ -31,7 +31,7 @@ public class Gold extends Unit {
         gc.fillOval(x, y, size, size);
         gc.strokeOval(x, y, size, size);
 
-        if (board.isTouchToPackman(this)){
+        if (board.isTouchToPackman(this)) {
             board.decGold();
             isVisible = false;
         }

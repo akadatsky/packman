@@ -2,11 +2,12 @@ package sample.model;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
+import sample.Config;
 import sample.board.Board;
 
 public abstract class Unit {
 
-    public static final int SIZE = 60;
+    public static final int SIZE = Config.CELL_SIZE;
 
     protected GraphicsContext gc;
     protected Board board;

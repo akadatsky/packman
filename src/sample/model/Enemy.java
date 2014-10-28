@@ -2,7 +2,7 @@ package sample.model;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
+import sample.Config;
 import sample.board.Board;
 
 import java.util.ArrayList;
@@ -60,9 +60,8 @@ public class Enemy extends MovingUnit {
 
     @Override
     public int getSpeed() {
-        return SIZE / 60 + 1;
+        return Config.ENEMY_SPEED;
     }
-
 
 
 }

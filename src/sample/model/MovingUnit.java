@@ -20,7 +20,7 @@ public abstract class MovingUnit extends Unit {
 
     public abstract int getSpeed();
 
-    protected void drawPacman(){
+    protected void drawPacman() {
         double x = getShiftedX(0.1);
         double y = getShiftedY(0.1);
         double size = getShiftedSize(0.1);

@@ -3,7 +3,7 @@ package sample.model;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.ArcType;
+import sample.Config;
 import sample.board.Board;
 
 public class Packman extends MovingUnit {
@@ -73,6 +73,6 @@ public class Packman extends MovingUnit {
 
     @Override
     public int getSpeed() {
-        return SIZE / 30 + 1;
+        return Config.PACMAN_SPEED;
     }
 }

@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import sample.Config;
 import sample.model.*;
 
 import java.util.Random;
@@ -64,15 +65,15 @@ public class Board {
 
         if (finished && goldCount != 0) {
             gc.setFill(Color.RED);
-            double fontSize = 80.0;
+            double fontSize = Config.CELL_SIZE;
             gc.setFont(new Font(fontSize));
-            gc.fillText("Game Over", 150, 280);
+            gc.fillText("Game Over", gc.getCanvas().getWidth() / 3, gc.getCanvas().getHeight() / 3);
         }
         if (finished && goldCount == 0) {
             gc.setFill(Color.GREEN);
-            double fontSize = 80.0;
+            double fontSize = Config.CELL_SIZE;
             gc.setFont(new Font(fontSize));
-            gc.fillText("You win!!!", 150, 280);
+            gc.fillText("You win!!!", gc.getCanvas().getWidth() / 3, gc.getCanvas().getHeight() / 3);
         }
     }
 

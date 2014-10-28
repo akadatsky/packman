@@ -10,6 +10,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import sample.board.Board;
 import sample.board.Map;
 import sample.model.Unit;
@@ -21,6 +22,7 @@ public class Main extends Application {
 
     private GraphicsContext gc;
     private Board board;
+    private boolean closed = false;
 
     public static void main(String[] args) {
         launch(args);
@@ -43,6 +45,12 @@ public class Main extends Application {
         initGame();
         runDrawThread();
     }
+
+    @Override
+    public void stop() throws Exception {
+        closed = true;
+    }
+
 
 
     private void initGame() {
@@ -68,7 +76,7 @@ public class Main extends Application {
     }
 
     private void runThreadBody() {
-        while (true) {
+        while (!closed) {
             showChangesInGuiThread();
             try {
                 Thread.sleep(40);
@@ -95,6 +103,5 @@ public class Main extends Application {
             }
         });
     }
-
 
 }

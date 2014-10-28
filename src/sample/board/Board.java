@@ -148,4 +148,8 @@ public class Board {
     public void setGameOver() {
         finished = true;
     }
+
+    public boolean isFinished() {
+        return finished;
+    }
 }

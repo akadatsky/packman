@@ -20,6 +20,9 @@ public class Enemy extends MovingUnit {
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(2);
         drawPacman();
+        if (board.isTouchToPackman(this)){
+            board.setGameOver();
+        }
     }
 
     @Override

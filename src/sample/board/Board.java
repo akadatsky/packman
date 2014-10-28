@@ -13,6 +13,7 @@ public class Board {
     public final Random rand = new Random();
 
     private Unit[][] field;
+    private int goldCount = 0;
 
     public Board(GraphicsContext gc) {
         int lineCount = Map.getMap().size();
@@ -33,6 +34,7 @@ public class Board {
             case '1':
                 return new Stone(gc, this, x, y);
             case 'g':
+                goldCount++;
                 return new Gold(gc, this, x, y);
             case 'e':
                 return new Enemy(gc, this, x, y);
@@ -84,7 +86,7 @@ public class Board {
                 opponent = field[y][x - 1];
                 break;
         }
-        if (opponent instanceof Stone){
+        if (opponent instanceof Stone) {
             return false;
         } else {
             return true;

@@ -61,23 +61,19 @@ public class Enemy extends Unit {
         }
         if (possibleMoves.size() > 0) {
             Board.Side side = possibleMoves.get(board.rand.nextInt(possibleMoves.size()));
-            destX = x;
-            destY = y;
+            destX = xCell * SIZE;
+            destY = yCell * SIZE;
             switch (side) {
                 case TOP:
-                    yCell--;
                     destY -= SIZE;
                     break;
                 case RIGHT:
-                    xCell++;
                     destX += SIZE;
                     break;
                 case BOTTOM:
-                    yCell++;
                     destY += SIZE;
                     break;
                 case LEFT:
-                    xCell--;
                     destX -= SIZE;
                     break;
             }
@@ -89,6 +85,7 @@ public class Enemy extends Unit {
 
         if (Math.abs(x - destX) <= speed) {
             x = destX;
+            xCell = x / SIZE;
         } else {
             if (x > destX) {
                 x -= speed;
@@ -99,6 +96,7 @@ public class Enemy extends Unit {
 
         if (Math.abs(y - destY) <= speed) {
             y = destY;
+            yCell = y / SIZE;
         } else {
             if (y > destY) {
                 y -= speed;

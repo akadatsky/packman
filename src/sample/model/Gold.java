@@ -24,7 +24,4 @@ public class Gold extends Unit {
         gc.strokeOval(x, y, size, size);
     }
 
-    @Override
-    public void move() {
-    }
 }

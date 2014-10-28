@@ -2,18 +2,21 @@ package sample;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.board.Board;
+import sample.model.Unit;
 
 public class Main extends Application {
 
-    public static final int CANVAS_X = 540;
-    public static final int CANVAS_Y = 540;
+    public static final int CANVAS_X = Unit.SIZE * 11;
+    public static final int CANVAS_Y = Unit.SIZE * 9;
 
     private GraphicsContext gc;
     private Board board;
@@ -34,10 +37,11 @@ public class Main extends Application {
 
         gc = canvas.getGraphicsContext2D();
 
+        registerOnKeyPressListener(primaryStage.getScene());
+
         initGame();
         runDrawThread();
     }
-
 
 
     private void initGame() {
@@ -81,5 +85,15 @@ public class Main extends Application {
             }
         });
     }
+
+    public void registerOnKeyPressListener(Scene scene) {
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                board.keyPressed(event.getCode());
+            }
+        });
+    }
+
 
 }

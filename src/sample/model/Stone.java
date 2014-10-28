@@ -20,8 +20,4 @@ public class Stone extends Unit {
         gc.fillRoundRect(x, y, size, size, 15, 15);
     }
 
-    @Override
-    public void move() {
-
-    }
 }

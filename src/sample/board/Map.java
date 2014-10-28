@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Map {
 
-    public static List<String> getMap(){
+    public static List<String> getMap() {
         List<String> result = new ArrayList<String>();
 
         // 0 - empty
@@ -14,15 +14,15 @@ public class Map {
         // a - hero
         // e - enemy
 
-        result.add("111111111");
-        result.add("1a0000001");
-        result.add("10101g101");
-        result.add("100g000e1");
-        result.add("101010101");
-        result.add("10g000001");
-        result.add("10101g1e1");
-        result.add("10e000001");
-        result.add("111111111");
+        result.add("11111111111");
+        result.add("1a0000000e1");
+        result.add("10101g10101");
+        result.add("10000000001");
+        result.add("10101010101");
+        result.add("10g00000001");
+        result.add("10101g10101");
+        result.add("1e0000000e1");
+        result.add("11111111111");
 
         return result;
     }

@@ -6,12 +6,20 @@ import sample.board.Board;
 
 public class Gold extends Unit {
 
+    private boolean isVisible = true;
+
     public Gold(GraphicsContext gc, Board board, int xCell, int yCell) {
         super(gc, board, xCell, yCell);
+        board.incGold();
     }
 
     @Override
     public void draw() {
+
+        if (!isVisible){
+            return;
+        }
+
         gc.setFill(Color.GOLD);
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(2);
@@ -22,6 +30,18 @@ public class Gold extends Unit {
 
         gc.fillOval(x, y, size, size);
         gc.strokeOval(x, y, size, size);
+
+        if (board.isTouchToPackman(this)){
+            board.decGold();
+            isVisible = false;
+        }
+
     }
+
+    @Override
+    public double getRadius() {
+        return super.getRadius() * 0.7;
+    }
+
 
 }

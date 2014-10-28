@@ -20,6 +20,7 @@ public class Packman extends Unit {
         super(gc, board, xCell, yCell);
         destX = x;
         destY = y;
+        board.setPackman(this);
     }
 
     @Override
@@ -87,7 +88,7 @@ public class Packman extends Unit {
         int tmpDestY = yCell * SIZE;
         switch (code) {
             case UP:
-                if (destX != tmpDestX){
+                if (destX != tmpDestX) {
                     return;
                 }
                 if (board.canMove(this, Board.Side.TOP)) {
@@ -95,7 +96,7 @@ public class Packman extends Unit {
                 }
                 break;
             case RIGHT:
-                if (destY != tmpDestY){
+                if (destY != tmpDestY) {
                     return;
                 }
                 if (board.canMove(this, Board.Side.RIGHT)) {
@@ -103,7 +104,7 @@ public class Packman extends Unit {
                 }
                 break;
             case DOWN:
-                if (destX != tmpDestX){
+                if (destX != tmpDestX) {
                     return;
                 }
                 if (board.canMove(this, Board.Side.BOTTOM)) {
@@ -111,7 +112,7 @@ public class Packman extends Unit {
                 }
                 break;
             case LEFT:
-                if (destY != tmpDestY){
+                if (destY != tmpDestY) {
                     return;
                 }
                 if (board.canMove(this, Board.Side.LEFT)) {
@@ -122,5 +123,10 @@ public class Packman extends Unit {
         destX = tmpDestX;
         destY = tmpDestY;
         isMoving = true;
+    }
+
+    @Override
+    public double getRadius() {
+        return super.getRadius() * 0.9;
     }
 }

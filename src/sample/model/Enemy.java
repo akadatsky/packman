@@ -43,6 +43,12 @@ public class Enemy extends Unit {
         if (mouseAngle >= 45) {
             mouseAngleStep = -1;
         }
+
+        if (board.isTouchToPackman(this)){
+            board.setGameOver();
+        }
+
+
     }
 
     @Override
@@ -109,4 +115,11 @@ public class Enemy extends Unit {
             isMoving = false;
         }
     }
+
+    @Override
+    public double getRadius() {
+        return super.getRadius() * 0.9;
+    }
+
+
 }

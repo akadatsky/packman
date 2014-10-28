@@ -11,12 +11,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.board.Board;
+import sample.board.Map;
 import sample.model.Unit;
 
 public class Main extends Application {
 
-    public static final int CANVAS_X = Unit.SIZE * 11;
-    public static final int CANVAS_Y = Unit.SIZE * 9;
+    public static final int CANVAS_X = Unit.SIZE * Map.getMap().get(0).length();
+    public static final int CANVAS_Y = Unit.SIZE * Map.getMap().size();
 
     private GraphicsContext gc;
     private Board board;

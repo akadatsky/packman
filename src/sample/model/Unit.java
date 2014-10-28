@@ -14,6 +14,7 @@ public abstract class Unit {
     protected int yCell;
     protected int x;
     protected int y;
+    protected double radius = SIZE / 2.0;
 
     public Unit(GraphicsContext gc, Board board, int xCell, int yCell) {
         this.gc = gc;
@@ -42,12 +43,20 @@ public abstract class Unit {
         return yCell;
     }
 
-    protected int getX() {
+    public int getX() {
         return x;
     }
 
-    protected int getY() {
+    public int getY() {
         return y;
+    }
+
+    public double getXCenter() {
+        return x + radius;
+    }
+
+    public double getYCenter() {
+        return y + radius;
     }
 
     protected double getShiftedX(double shift) {
@@ -60,5 +69,9 @@ public abstract class Unit {
 
     public static double getShiftedSize(double shift) {
         return SIZE - 2 * SIZE * shift;
+    }
+
+    public double getRadius() {
+        return radius;
     }
 }

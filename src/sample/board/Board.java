@@ -7,9 +7,13 @@ import javafx.scene.text.Font;
 import sample.Config;
 import sample.model.*;
 
+import java.util.List;
 import java.util.Random;
 
 public class Board {
+
+    private int lineCount;
+    private int columnCount;
 
     public static enum Side {TOP, RIGHT, LEFT, BOTTOM}
 
@@ -25,13 +29,14 @@ public class Board {
 
     public Board(GraphicsContext gc) {
         this.gc = gc;
-        int lineCount = Map.getMap().size();
+        List<String> map = Map.getMap();
+        lineCount = map.size();
         field = new Unit[lineCount][];
         for (int i = 0; i < lineCount; i++) {
-            int unitInLineCount = Map.getMap().get(i).length();
-            field[i] = new Unit[unitInLineCount];
-            for (int j = 0; j < unitInLineCount; j++) {
-                field[i][j] = createUnit(gc, Map.getMap().get(i).charAt(j), j, i);
+            columnCount = map.get(i).length();
+            field[i] = new Unit[columnCount];
+            for (int j = 0; j < columnCount; j++) {
+                field[i][j] = createUnit(gc, map.get(i).charAt(j), j, i);
             }
         }
     }
@@ -152,5 +157,13 @@ public class Board {
 
     public boolean isFinished() {
         return finished;
+    }
+
+    public int getLineCount() {
+        return lineCount;
+    }
+
+    public int getColumnCount() {
+        return columnCount;
     }
 }

@@ -16,8 +16,8 @@ import sample.model.Unit;
 
 public class Main extends Application {
 
-    public static final int CANVAS_X = Unit.SIZE * Map.getMap().get(0).length();
-    public static final int CANVAS_Y = Unit.SIZE * Map.getMap().size();
+    public static final int CANVAS_X = Unit.SIZE * 11;
+    public static final int CANVAS_Y = Unit.SIZE * 10;
 
     private GraphicsContext gc;
     private Board board;
@@ -32,16 +32,17 @@ public class Main extends Application {
         primaryStage.setTitle("Packman");
         Canvas canvas = new Canvas(CANVAS_X, CANVAS_Y);
         BorderPane group = new BorderPane();
+
+        initGame(canvas);
+
         group.setCenter(canvas);
         final Scene scene = new Scene(group);
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        gc = canvas.getGraphicsContext2D();
 
         registerOnKeyPressListener(primaryStage.getScene());
 
-        initGame();
         runDrawThread();
     }
 
@@ -51,8 +52,11 @@ public class Main extends Application {
     }
 
 
-    private void initGame() {
+    private void initGame(Canvas canvas) {
+        gc = canvas.getGraphicsContext2D();
         board = new Board(gc);
+        canvas.setWidth(Unit.SIZE * board.getColumnCount());
+        canvas.setHeight(Unit.SIZE * board.getLineCount());
     }
 
     private void drawFrame() {

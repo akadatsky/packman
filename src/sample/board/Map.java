@@ -16,7 +16,7 @@ public class Map {
         return readFile();
     }
 
-    public static List<String> getDefoltMap() {
+    public static List<String> getDefaultMap() {
         List<String> result = new ArrayList<String>();
 
         // 0 - empty
@@ -40,7 +40,7 @@ public class Map {
 
     private static List<String> readFile() {
         Path path = Paths.get(Config.MAP_FILE);
-        List<String> result = getDefoltMap();
+        List<String> result = getDefaultMap();
         try {
             result = Files.readAllLines(path, StandardCharsets.UTF_8);
         } catch (IOException e) {

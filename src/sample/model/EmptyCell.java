@@ -14,8 +14,4 @@ public class EmptyCell extends Unit {
 
     }
 
-    @Override
-    public void move() {
-
-    }
 }

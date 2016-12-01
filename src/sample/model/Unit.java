@@ -44,14 +44,6 @@ public abstract class Unit {
         return yCell;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
     public double getXCenter() {
         return x + radius;
     }

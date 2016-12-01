@@ -155,10 +155,6 @@ public class Board {
         finished = true;
     }
 
-    public boolean isFinished() {
-        return finished;
-    }
-
     public int getLineCount() {
         return lineCount;
     }

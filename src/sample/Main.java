@@ -28,7 +28,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Packman");
+        primaryStage.setTitle("Pacman");
         Canvas canvas = new Canvas(CANVAS_X, CANVAS_Y);
         BorderPane group = new BorderPane();
 

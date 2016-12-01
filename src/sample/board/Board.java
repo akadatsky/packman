@@ -15,14 +15,14 @@ public class Board {
     private int lineCount;
     private int columnCount;
 
-    public static enum Side {TOP, RIGHT, LEFT, BOTTOM}
+    public enum Side {TOP, RIGHT, LEFT, BOTTOM}
 
     public final Random rand = new Random();
 
     private Unit[][] field;
     private int goldCount = 0;
 
-    private Packman packman;
+    private Pacman pacman;
     private boolean finished = false;
 
     private GraphicsContext gc;
@@ -44,7 +44,7 @@ public class Board {
     private Unit createUnit(GraphicsContext gc, char c, int x, int y) {
         switch (c) {
             case 'a':
-                return new Packman(gc, this, x, y);
+                return new Pacman(gc, this, x, y);
             case '1':
                 return new Stone(gc, this, x, y);
             case 'g':
@@ -138,13 +138,13 @@ public class Board {
         goldCount--;
     }
 
-    public void setPackman(Packman packman) {
-        this.packman = packman;
+    public void setPacman(Pacman pacman) {
+        this.pacman = pacman;
     }
 
-    public boolean isTouchToPackman(Unit unit) {
-        double distance = Math.sqrt(Math.pow(unit.getXCenter() - packman.getXCenter(), 2) + Math.pow(unit.getYCenter() - packman.getYCenter(), 2));
-        if (distance < unit.getRadius() + packman.getRadius()) {
+    public boolean isTouchToPacman(Unit unit) {
+        double distance = Math.sqrt(Math.pow(unit.getXCenter() - pacman.getXCenter(), 2) + Math.pow(unit.getYCenter() - pacman.getYCenter(), 2));
+        if (distance < unit.getRadius() + pacman.getRadius()) {
             return true;
         } else {
             return false;

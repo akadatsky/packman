@@ -6,11 +6,11 @@ import javafx.scene.paint.Color;
 import sample.Config;
 import sample.board.Board;
 
-public class Packman extends MovingUnit {
+public class Pacman extends MovingUnit {
 
-    public Packman(GraphicsContext gc, Board board, int xCell, int yCell) {
+    public Pacman(GraphicsContext gc, Board board, int xCell, int yCell) {
         super(gc, board, xCell, yCell);
-        board.setPackman(this);
+        board.setPacman(this);
     }
 
     @Override

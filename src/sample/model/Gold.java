@@ -31,7 +31,7 @@ public class Gold extends Unit {
         gc.fillOval(x, y, size, size);
         gc.strokeOval(x, y, size, size);
 
-        if (board.isTouchToPackman(this)) {
+        if (board.isTouchToPacman(this)) {
             board.decGold();
             isVisible = false;
         }

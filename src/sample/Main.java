@@ -11,7 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.board.Board;
-import sample.board.Map;
 import sample.model.Unit;
 
 public class Main extends Application {

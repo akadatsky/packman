@@ -7,7 +7,7 @@ import sample.board.Board;
 
 public abstract class Unit {
 
-    public static final int SIZE = Config.CELL_SIZE;
+    protected static final int SIZE = Config.CELL_SIZE;
 
     protected final GraphicsContext gc;
     protected final Board board;

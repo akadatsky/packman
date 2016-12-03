@@ -11,12 +11,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.board.Board;
-import sample.model.Unit;
 
 public class Main extends Application {
-
-    private static final int CANVAS_X = Unit.SIZE * 11;
-    private static final int CANVAS_Y = Unit.SIZE * 10;
 
     private GraphicsContext gc;
     private Board board;
@@ -29,7 +25,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Pacman");
-        Canvas canvas = new Canvas(CANVAS_X, CANVAS_Y);
+        Canvas canvas = new Canvas();
         BorderPane group = new BorderPane();
 
         initGame(canvas);
@@ -38,7 +34,6 @@ public class Main extends Application {
         final Scene scene = new Scene(group);
         primaryStage.setScene(scene);
         primaryStage.show();
-
 
         registerOnKeyPressListener(primaryStage.getScene());
 
@@ -54,8 +49,8 @@ public class Main extends Application {
     private void initGame(Canvas canvas) {
         gc = canvas.getGraphicsContext2D();
         board = new Board(gc);
-        canvas.setWidth(Unit.SIZE * board.getColumnCount());
-        canvas.setHeight(Unit.SIZE * board.getLineCount());
+        canvas.setWidth(Config.CELL_SIZE * board.getColumnCount());
+        canvas.setHeight(Config.CELL_SIZE * board.getLineCount());
     }
 
     private void drawFrame() {

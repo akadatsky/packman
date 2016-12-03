@@ -18,7 +18,7 @@ import java.util.Random;
 public class Board {
 
     private final int lineCount;
-    private int columnCount;
+    private final int columnCount;
 
     public enum Side {TOP, RIGHT, LEFT, BOTTOM}
 
@@ -36,9 +36,9 @@ public class Board {
         this.gc = gc;
         List<String> map = Map.getMap();
         lineCount = map.size();
+        columnCount = map.get(0).length();
         field = new Unit[lineCount][];
         for (int i = 0; i < lineCount; i++) {
-            columnCount = map.get(i).length();
             field[i] = new Unit[columnCount];
             for (int j = 0; j < columnCount; j++) {
                 field[i][j] = createUnit(gc, map.get(i).charAt(j), j, i);

@@ -123,11 +123,7 @@ public class Board {
                 opponent = field[y][x - 1];
                 break;
         }
-        if (opponent instanceof Stone) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(opponent instanceof Stone);
     }
 
     public void incGold() {
@@ -144,11 +140,7 @@ public class Board {
 
     public boolean isTouchToPacman(Unit unit) {
         double distance = Math.sqrt(Math.pow(unit.getXCenter() - pacman.getXCenter(), 2) + Math.pow(unit.getYCenter() - pacman.getYCenter(), 2));
-        if (distance < unit.getRadius() + pacman.getRadius()) {
-            return true;
-        } else {
-            return false;
-        }
+        return distance < unit.getRadius() + pacman.getRadius();
     }
 
     public void setGameOver() {

@@ -33,7 +33,7 @@ public class Enemy extends MovingUnit {
             return;
         }
 
-        List<Board.Side> possibleMoves = new ArrayList<Board.Side>();
+        List<Board.Side> possibleMoves = new ArrayList<>();
         for (Board.Side side : Board.Side.values()) {
             if (board.canMove(this, side)) {
                 possibleMoves.add(side);

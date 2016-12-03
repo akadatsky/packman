@@ -17,7 +17,7 @@ public class Map {
     }
 
     private static List<String> getDefaultMap() {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
 
         // 0 - empty
         // 1 - stone

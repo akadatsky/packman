@@ -2,11 +2,9 @@ package sample;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -34,12 +32,11 @@ public class Main extends Application {
 
         group.setCenter(canvas);
         Scene scene = new Scene(group);
+        scene.setOnKeyPressed(event -> board.keyPressed(event.getCode()));
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        registerOnKeyPressListener(primaryStage.getScene());
-
-        runDrawThread();
+        new Thread(this::runGameLoopInThread).start();
     }
 
     @Override
@@ -55,27 +52,10 @@ public class Main extends Application {
         canvas.setHeight(Config.CELL_SIZE * board.getLineCount());
     }
 
-    private void drawFrame() {
-        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-        gc.setFill(Color.LIGHTGRAY);
-        gc.fillRoundRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight(), 0, 0);
-        board.draw();
-        board.move();
-    }
-
-    private void runDrawThread() {
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                runThreadBody();
-            }
-        };
-        thread.start();
-    }
-
-    private void runThreadBody() {
+    private void runGameLoopInThread() {
         while (!closed) {
-            showChangesInGuiThread();
+            // run in UI thread
+            Platform.runLater(this::drawFrame);
             try {
                 Thread.sleep(FRAME_MILLIS);
             } catch (InterruptedException e) {
@@ -84,22 +64,12 @@ public class Main extends Application {
         }
     }
 
-    private void showChangesInGuiThread() {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                drawFrame();
-            }
-        });
-    }
-
-    private void registerOnKeyPressListener(Scene scene) {
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                board.keyPressed(event.getCode());
-            }
-        });
+    private void drawFrame() {
+        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+        gc.setFill(Color.LIGHTGRAY);
+        gc.fillRoundRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight(), 0, 0);
+        board.draw();
+        board.move();
     }
 
 }

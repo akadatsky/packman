@@ -5,7 +5,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import sample.Config;
-import sample.model.*;
+import sample.model.EmptyCell;
+import sample.model.Enemy;
+import sample.model.Gold;
+import sample.model.Pacman;
+import sample.model.Stone;
+import sample.model.Unit;
 
 import java.util.List;
 import java.util.Random;

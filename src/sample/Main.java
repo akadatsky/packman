@@ -12,7 +12,7 @@ import sample.board.Board;
 
 public class Main extends Application {
 
-    private static final int FRAME_MILLIS = 40;
+    private static final int PAUSE_BETWEEN_FRAMES_MILLIS = 40;
 
     private GraphicsContext gc;
     private Board board;
@@ -57,7 +57,7 @@ public class Main extends Application {
             // run in UI thread
             Platform.runLater(this::drawFrame);
             try {
-                Thread.sleep(FRAME_MILLIS);
+                Thread.sleep(PAUSE_BETWEEN_FRAMES_MILLIS);
             } catch (InterruptedException e) {
                 break;
             }

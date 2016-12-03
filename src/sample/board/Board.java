@@ -57,13 +57,8 @@ public class Board {
         }
     }
 
-    public void clean() {
-        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-        gc.setFill(Color.LIGHTGRAY);
-        gc.fillRoundRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight(), 0, 0);
-    }
-
     public void draw() {
+        clean();
 
         if (goldCount == 0) {
             finished = true;
@@ -89,7 +84,13 @@ public class Board {
         }
     }
 
-    public void move() {
+    private void clean() {
+        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+        gc.setFill(Color.LIGHTGRAY);
+        gc.fillRoundRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight(), 0, 0);
+    }
+
+    public void calculateNextMove() {
         if (finished) {
             return;
         }

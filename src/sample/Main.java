@@ -13,7 +13,7 @@ public class Main extends Application {
     private static final int PAUSE_BETWEEN_FRAMES_MILLIS = 40;
 
     private Board board;
-    private boolean closed = false;
+    private boolean closed;
 
     public static void main(String[] args) {
         launch(args);
@@ -23,29 +23,20 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Pacman");
         Canvas canvas = new Canvas();
-        BorderPane group = new BorderPane();
-
-        initGame(canvas);
-
-        group.setCenter(canvas);
+        board = new Board(canvas.getGraphicsContext2D());
+        canvas.setWidth(Config.CELL_SIZE * board.getColumnCount());
+        canvas.setHeight(Config.CELL_SIZE * board.getLineCount());
+        BorderPane group = new BorderPane(canvas);
         Scene scene = new Scene(group);
         scene.setOnKeyPressed(event -> board.keyPressed(event.getCode()));
         primaryStage.setScene(scene);
         primaryStage.show();
-
         new Thread(this::runMainGameLoopInThread).start();
     }
 
     @Override
     public void stop() throws Exception {
         closed = true;
-    }
-
-
-    private void initGame(Canvas canvas) {
-        board = new Board(canvas.getGraphicsContext2D());
-        canvas.setWidth(Config.CELL_SIZE * board.getColumnCount());
-        canvas.setHeight(Config.CELL_SIZE * board.getLineCount());
     }
 
     private void runMainGameLoopInThread() {
@@ -61,9 +52,8 @@ public class Main extends Application {
     }
 
     private void drawFrame() {
-        board.clean();
         board.draw();
-        board.move();
+        board.calculateNextMove();
     }
 
 }

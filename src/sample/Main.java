@@ -4,9 +4,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.board.Board;
 
@@ -14,7 +12,6 @@ public class Main extends Application {
 
     private static final int PAUSE_BETWEEN_FRAMES_MILLIS = 40;
 
-    private GraphicsContext gc;
     private Board board;
     private boolean closed = false;
 
@@ -36,7 +33,7 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        new Thread(this::runGameLoopInThread).start();
+        new Thread(this::runMainGameLoopInThread).start();
     }
 
     @Override
@@ -46,13 +43,12 @@ public class Main extends Application {
 
 
     private void initGame(Canvas canvas) {
-        gc = canvas.getGraphicsContext2D();
-        board = new Board(gc);
+        board = new Board(canvas.getGraphicsContext2D());
         canvas.setWidth(Config.CELL_SIZE * board.getColumnCount());
         canvas.setHeight(Config.CELL_SIZE * board.getLineCount());
     }
 
-    private void runGameLoopInThread() {
+    private void runMainGameLoopInThread() {
         while (!closed) {
             // run in UI thread
             Platform.runLater(this::drawFrame);
@@ -65,9 +61,7 @@ public class Main extends Application {
     }
 
     private void drawFrame() {
-        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-        gc.setFill(Color.LIGHTGRAY);
-        gc.fillRoundRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight(), 0, 0);
+        board.clean();
         board.draw();
         board.move();
     }

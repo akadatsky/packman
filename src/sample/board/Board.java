@@ -17,20 +17,17 @@ import java.util.Random;
 
 public class Board {
 
-    private final int lineCount;
-    private final int columnCount;
-
     public enum Side {TOP, RIGHT, LEFT, BOTTOM}
 
+    private final int lineCount;
+    private final int columnCount;
+    private final GraphicsContext gc;
     public final Random rand = new Random();
-
     private final Unit[][] field;
-    private int goldCount = 0;
 
     private Pacman pacman;
+    private int goldCount = 0;
     private boolean finished = false;
-
-    private final GraphicsContext gc;
 
     public Board(GraphicsContext gc) {
         this.gc = gc;
@@ -59,6 +56,12 @@ public class Board {
             default:
                 return new EmptyCell(gc, this, x, y);
         }
+    }
+
+    public void clean() {
+        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+        gc.setFill(Color.LIGHTGRAY);
+        gc.fillRoundRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight(), 0, 0);
     }
 
     public void draw() {

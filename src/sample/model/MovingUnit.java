@@ -3,12 +3,13 @@ package sample.model;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.shape.ArcType;
 import sample.board.Board;
+import sample.util.Randomizer;
 
 public abstract class MovingUnit extends Unit {
 
     protected int destX;
     protected int destY;
-    private int mouseAngle = board.rand.nextInt(45);
+    private int mouseAngle = Randomizer.nextInt(45);
     private int mouseAngleStep = 1;
     boolean isMoving;
 

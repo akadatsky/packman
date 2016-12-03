@@ -22,7 +22,6 @@ public class Board {
     private final int lineCount;
     private final int columnCount;
     private final GraphicsContext gc;
-    public final Random rand = new Random();
     private final Unit[][] field;
 
     private Pacman pacman;

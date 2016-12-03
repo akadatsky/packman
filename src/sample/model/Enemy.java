@@ -4,6 +4,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import sample.Config;
 import sample.board.Board;
+import sample.util.Randomizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class Enemy extends MovingUnit {
             }
         }
         if (possibleMoves.size() > 0) {
-            Board.Side side = possibleMoves.get(board.rand.nextInt(possibleMoves.size()));
+            Board.Side side = possibleMoves.get(Randomizer.nextInt(possibleMoves.size()));
             destX = xCell * SIZE;
             destY = yCell * SIZE;
             switch (side) {

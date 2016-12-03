@@ -67,9 +67,9 @@ public class Board {
             finished = true;
         }
 
-        for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field[i].length; j++) {
-                field[i][j].draw();
+        for (Unit[] line : field) {
+            for (Unit unit : line) {
+                unit.draw();
             }
         }
 
@@ -91,9 +91,9 @@ public class Board {
         if (finished) {
             return;
         }
-        for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field[i].length; j++) {
-                field[i][j].move();
+        for (Unit[] line : field) {
+            for (Unit unit : line) {
+                unit.move();
             }
         }
     }
@@ -102,9 +102,9 @@ public class Board {
         if (finished) {
             return;
         }
-        for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field[i].length; j++) {
-                field[i][j].keyPressed(code);
+        for (Unit[] line : field) {
+            for (Unit unit : line) {
+                unit.keyPressed(code);
             }
         }
     }

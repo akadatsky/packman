@@ -6,19 +6,19 @@ import sample.board.Board;
 
 public abstract class MovingUnit extends Unit {
 
-    protected boolean isMoving = false;
     protected int destX;
     protected int destY;
-    protected int mouseAngle = board.rand.nextInt(45);
-    protected int mouseAngleStep = 1;
+    private int mouseAngle = board.rand.nextInt(45);
+    private int mouseAngleStep = 1;
+    boolean isMoving;
 
-    public MovingUnit(GraphicsContext gc, Board board, int xCell, int yCell) {
+    protected MovingUnit(GraphicsContext gc, Board board, int xCell, int yCell) {
         super(gc, board, xCell, yCell);
         destX = x;
         destY = y;
     }
 
-    public abstract int getSpeed();
+    protected abstract int getSpeed();
 
     protected void drawPacman() {
         double x = getShiftedX(0.1);

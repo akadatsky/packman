@@ -15,8 +15,8 @@ import sample.model.Unit;
 
 public class Main extends Application {
 
-    public static final int CANVAS_X = Unit.SIZE * 11;
-    public static final int CANVAS_Y = Unit.SIZE * 10;
+    private static final int CANVAS_X = Unit.SIZE * 11;
+    private static final int CANVAS_Y = Unit.SIZE * 10;
 
     private GraphicsContext gc;
     private Board board;
@@ -96,7 +96,7 @@ public class Main extends Application {
         });
     }
 
-    public void registerOnKeyPressListener(Scene scene) {
+    private void registerOnKeyPressListener(Scene scene) {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {

@@ -16,7 +16,7 @@ public class Map {
         return readFile();
     }
 
-    public static List<String> getDefaultMap() {
+    private static List<String> getDefaultMap() {
         List<String> result = new ArrayList<String>();
 
         // 0 - empty

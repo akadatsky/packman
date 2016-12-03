@@ -12,20 +12,20 @@ import java.util.Random;
 
 public class Board {
 
-    private int lineCount;
+    private final int lineCount;
     private int columnCount;
 
     public enum Side {TOP, RIGHT, LEFT, BOTTOM}
 
     public final Random rand = new Random();
 
-    private Unit[][] field;
+    private final Unit[][] field;
     private int goldCount = 0;
 
     private Pacman pacman;
     private boolean finished = false;
 
-    private GraphicsContext gc;
+    private final GraphicsContext gc;
 
     public Board(GraphicsContext gc) {
         this.gc = gc;

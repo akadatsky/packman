@@ -9,15 +9,15 @@ public abstract class Unit {
 
     public static final int SIZE = Config.CELL_SIZE;
 
-    protected GraphicsContext gc;
-    protected Board board;
+    protected final GraphicsContext gc;
+    protected final Board board;
     protected int xCell;
     protected int yCell;
     protected int x;
     protected int y;
-    protected double radius = SIZE / 2.0;
+    private final double radius = SIZE / 2.0;
 
-    public Unit(GraphicsContext gc, Board board, int xCell, int yCell) {
+    protected Unit(GraphicsContext gc, Board board, int xCell, int yCell) {
         this.gc = gc;
         this.board = board;
         this.xCell = xCell;
@@ -60,7 +60,7 @@ public abstract class Unit {
         return y + SIZE * shift;
     }
 
-    public static double getShiftedSize(double shift) {
+    protected static double getShiftedSize(double shift) {
         return SIZE - 2 * SIZE * shift;
     }
 

@@ -14,6 +14,8 @@ import sample.board.Board;
 
 public class Main extends Application {
 
+    private static final int FRAME_MILLIS = 40;
+
     private GraphicsContext gc;
     private Board board;
     private boolean closed = false;
@@ -31,7 +33,7 @@ public class Main extends Application {
         initGame(canvas);
 
         group.setCenter(canvas);
-        final Scene scene = new Scene(group);
+        Scene scene = new Scene(group);
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -75,7 +77,7 @@ public class Main extends Application {
         while (!closed) {
             showChangesInGuiThread();
             try {
-                Thread.sleep(40);
+                Thread.sleep(FRAME_MILLIS);
             } catch (InterruptedException e) {
                 break;
             }

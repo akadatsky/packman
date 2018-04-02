@@ -9,8 +9,8 @@ public abstract class MovingUnit extends Unit {
 
     protected int destX;
     protected int destY;
-    private int mouseAngle = Randomizer.nextInt(45);
-    private int mouseAngleStep = 1;
+    private int mouthAngle = Randomizer.nextInt(45);
+    private int mouthAngleStep = 1;
     boolean isMoving;
 
     protected MovingUnit(GraphicsContext gc, Board board, int xCell, int yCell) {
@@ -26,15 +26,15 @@ public abstract class MovingUnit extends Unit {
         double y = getShiftedY(0.1);
         double size = getShiftedSize(0.1);
 
-        gc.fillArc(x, y, size, size, mouseAngle, 360 - mouseAngle * 2, ArcType.ROUND);
-        gc.strokeArc(x, y, size, size, mouseAngle, 360 - mouseAngle * 2, ArcType.ROUND);
+        gc.fillArc(x, y, size, size, mouthAngle, 360 - mouthAngle * 2, ArcType.ROUND);
+        gc.strokeArc(x, y, size, size, mouthAngle, 360 - mouthAngle * 2, ArcType.ROUND);
 
-        mouseAngle += mouseAngleStep;
-        if (mouseAngle <= 0) {
-            mouseAngleStep = 1;
+        mouthAngle += mouthAngleStep;
+        if (mouthAngle <= 0) {
+            mouthAngleStep = 1;
         }
-        if (mouseAngle >= 45) {
-            mouseAngleStep = -1;
+        if (mouthAngle >= 45) {
+            mouthAngleStep = -1;
         }
     }
 
